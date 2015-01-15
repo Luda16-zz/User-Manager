@@ -24,14 +24,16 @@ Extra Snippets
 
 Ajax prefilters are useful for hooking into all AJAX request. In this case, we want to send all our AJAX request off to a remote server instead of the same domain. So we use a prefilter to hook in before the request is sent and prepend our custom origin server.
 
+```javascript
   $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
     options.url = 'http://backbonejs-beginner.herokuapp.com' + options.url;
   });
   jQuery SerializeObject
+```
 
 By default jQuery doesn't allow us to convert our forms into Javascript Objects, someone wrote this snippet on Stack Overflow that I have been using for years. Simply call it via $(form).serializeObject() and get a object returned.
 
-
+```javascript
   $.fn.serializeObject = function() {
     var o = {};
     var a = this.serializeArray();
@@ -47,11 +49,13 @@ By default jQuery doesn't allow us to convert our forms into Javascript Objects,
     });
     return o;
   };
+```
   
 **Preventing XSS**
 
 As always you need to protect your users by encoding input and output, here is some simple methods for doing so.
 
+```html
   function htmlEncode(value){
     return $('<div/>').text(value).html();
   }
@@ -59,3 +63,4 @@ As always you need to protect your users by encoding input and output, here is s
   function htmlDecode(value){
     return $('<div/>').html(value).text();
   }
+```
